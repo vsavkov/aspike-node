@@ -1,0 +1,35 @@
+{"1.2.0",
+[{<<"aspike_protocol">>,
+  {git,"git@github.com:vsavkov/aspike-protocol.git",
+       {ref,"95a345db807d79ff02851feaac213206edf183a7"}},
+  0},
+ {<<"erlsem">>,
+  {git,"https://github.com/x0id/erlsem.git",
+       {ref,"118506906cb41e9100392da4711bc9303451ec88"}},
+  1},
+ {<<"foil">>,
+  {git,"https://github.com/lpgauth/foil.git",
+       {ref,"e462829855a745d8f20fb0508ae3eb8e323b03bd"}},
+  1},
+ {<<"granderl">>,
+  {git,"https://github.com/adgear/granderl.git",
+       {ref,"04cafe466b11010687ecc29f99aacb4234401f8c"}},
+  1},
+ {<<"metal">>,
+  {git,"https://github.com/lpgauth/metal.git",
+       {ref,"43e28220b5affa45aa1e5fb0583fee26547968d3"}},
+  1},
+ {<<"prometheus">>,{pkg,<<"prometheus">>,<<"4.8.1">>},1},
+ {<<"quantile_estimator">>,{pkg,<<"quantile_estimator">>,<<"0.2.1">>},2},
+ {<<"shackle">>,
+  {git,"ssh://git@github.com/adgear/erlang-shackle.git",
+       {ref,"914a37138ebfde99f5f5d33bcbb0fb9a9cdc31a0"}},
+  0}]}.
+[
+{pkg_hash,[
+ {<<"prometheus">>, <<"FA76B152555273739C14B06F09F485CF6D5D301FE4E9D31B7FF803D26025D7A0">>},
+ {<<"quantile_estimator">>, <<"EF50A361F11B5F26B5F16D0696E46A9E4661756492C981F7B2229EF42FF1CD15">>}]},
+{pkg_hash_ext,[
+ {<<"prometheus">>, <<"6EDFBE928D271C7F657A6F2C46258738086584BD6CAE4A000B8B9A6009BA23A5">>},
+ {<<"quantile_estimator">>, <<"282A8A323CA2A845C9E6F787D166348F776C1D4A41EDE63046D72D422E3DA946">>}]}
+].
