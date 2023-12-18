@@ -3,7 +3,7 @@
 
 -dialyzer({nowarn_function, [
   start/2, stop/1,
-  receive_response/1, receive_response/2,
+  receive_response/1,
   call/2, cast/2]}).
 
 %% API
@@ -20,8 +20,7 @@
   async_remove/4,
   exists/4,
   async_exists/4,
-  receive_response/1,
-  receive_response/2
+  receive_response/1
 ]).
 
 %% public
@@ -47,13 +46,16 @@ start(Node_id, #aspike_node_params{
   }
 }) ->
 
+  Address_str = if is_binary(Address) -> binary_to_list(Address); true -> Address end,
+  Endpoint1 = Endpoint#aspike_endpoint{address = Address_str},
+
   Init_options = #aspike_node_init_options{
     node_id = Node_id,
-    endpoint = Endpoint,
+    endpoint = Endpoint1,
     user = User},
   ClientOptions = [
     {init_options, Init_options},
-    {address, Address},
+    {address, Address_str},
     {port, Port},
     {protocol, shackle_tcp},
     {reconnect, Reconnect},
@@ -80,7 +82,7 @@ stop(Node_id) ->
   case shackle_pool:stop(Node_id) of
     ok -> ok;
     {error, shackle_not_started} = Err -> Err;
-    {error, pool_already_started} -> {error, aspike_node_not_started}
+    {error, pool_not_started} -> {error, aspike_node_not_started}
   end.
 
 -spec put(aspike:node_id(), aspike:namespace(), aspike:set(),
@@ -141,14 +143,6 @@ async_exists(Node_id, Namespace, Set, Key_digest) ->
 -spec receive_response({aspike:op(), aspike:response_id()}) -> aspike:handled_response().
 receive_response({Op, RequestId}) ->
   aspike_node_response:handle(Op, shackle:receive_response(RequestId)).
-
--spec receive_response({aspike:op(), aspike:response_id()}, timeout()) ->
-  aspike:handled_response() | {error, timeout}.
-receive_response({Op, RequestId}, Timeout) ->
-  try shackle:receive_response(RequestId, Timeout) of
-    Response -> aspike_node_response:handle(Op, Response)
-  catch error:timeout -> {error, timeout}
-  end.
 
 %% private
 call(Node_id, {Op, _Data} = Request) ->
