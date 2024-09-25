@@ -1,6 +1,6 @@
 {"1.2.0",
 [{<<"aspike_protocol">>,
-  {git,"git@github.com:vsavkov/aspike-protocol.git",
+  {git,"https://github.com/vsavkov/aspike-protocol.git",
        {ref,"b73c0a6189e4f25b03f1a82a02945573122f3561"}},
   0},
  {<<"foil">>,{pkg,<<"foil">>,<<"0.1.3">>},1},
@@ -10,7 +10,7 @@
   1},
  {<<"metal">>,{pkg,<<"metal">>,<<"0.1.1">>},1},
  {<<"shackle">>,
-  {git,"ssh://git@github.com/lpgauth/shackle.git",
+  {git,"https://github.com/lpgauth/shackle.git",
        {ref,"a4f7d82d10115cf0d676582b638a56260be685d5"}},
   0}]}.
 [
